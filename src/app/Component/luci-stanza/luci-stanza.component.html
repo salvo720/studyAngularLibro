@@ -1,0 +1,29 @@
+<div>
+  <ul>
+<!-- ngFor statment con annidato un ngIf angular  -->
+<!-- NOTA Bene : ngIF , nota che e stata messa una condizione , e poi ; else showluce , showluce ,
+  fa riferimento a una variabile locale che viene definita sotto con #showLuce , con il # , che e il blocco
+che sara chiamata quando si verifica un else   -->
+    <li *ngFor="let luciSingole of lucidb">
+      <i *ngIf="luciSingole.stato == 'OFF' ; else showLuce" class="material-icons">lightbulb_outline </i>
+      {{ luciSingole.stanza }}
+
+    <ng-template #showLuce>
+      <i class="material-icons on ">lightbulb_outline </i>
+    </ng-template>
+  </li>
+  </ul>
+</div>
+
+<!-- switch statment angular  -->
+
+
+<h3> switch case statement angular </h3>
+<div>
+  <div [ngSwitch]="testSwitch">
+    <p *ngSwitchCase="'valoreA'">AAA</p>
+    <p *ngSwitchCase="'valoreB'">BBB</p>
+    <p *ngSwitchCase="'valoreC'">CCC</p>
+    <p *ngSwitchDefault class="errore">Errore</p>
+  </div>
+</div>
