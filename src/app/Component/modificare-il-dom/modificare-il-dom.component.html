@@ -1,0 +1,68 @@
+<h1>modificare-il-dom Capitolo 5 works!</h1>
+
+<div>
+  <!-- [ngStyle] -->
+  <div>
+    <h3> paragrafo 1 [ngStyle]</h3>
+    <p [ngStyle]="Paragraph1Style">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut.
+      Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut
+      consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati
+      reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda
+      earum eos mollitia nulla.
+    </p>
+
+    <!-- applichiamo ngStyle ma mettiamo nello script solo quello che cambia  -->
+    <h3> paragrafo 2 </h3>
+    <p [ngStyle]=" { 'font-family':'Arial' , 'color' : 'darkcyan' , 'font-size': Paragraph2Style , 'font-weight': StyleWeight}">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut.
+      Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut
+      consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati
+      reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda
+      earum eos mollitia nulla.
+    </p>
+  </div>
+  <hr>
+
+  <!-- [ngClass] -->
+  <div>
+    <h3> paragrafo 1 [ngClass] </h3>
+    <p [ngClass]="Paragraph1Class" class="big-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut.
+      Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut
+      consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati
+      reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda
+      earum eos mollitia nulla.
+    </p>
+
+    <!-- [ngClass] con un Array -->
+    <h3> paragrafo 2 </h3>
+    <p [ngClass]="Paragraph2ClassArray" class="big-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut.
+      Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut
+      consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati
+      reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda
+      earum eos mollitia nulla.
+    </p>
+
+    <!-- [ngClass] con un Oggetto -->
+    <h3> paragrafo 3 </h3>
+    <p [ngClass]="Paragraph2ClassObject" class="big-text">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut.
+      Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Maiores obcaecati reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut
+      consectetur, quis excepturi assumenda earum eos mollitia nulla. Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores obcaecati
+      reprehenderit quas cumque qui. Necessitatibus, distinctio aut. Repellat accusamus doloremque labore ut consectetur, quis excepturi assumenda
+      earum eos mollitia nulla.
+    </p>
+  </div>
+  <hr>
+
+
+  <!-- fermo a coding pag 75 le pipe capitolo 6  -->
+
+</div>

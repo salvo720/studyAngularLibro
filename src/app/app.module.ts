@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './Component/navbar/navbar.component';
 import { ListaMetroComponent } from './Component/lista-metro/lista-metro.component';
-import { LuciStanzaComponent } from './component/luci-stanza/luci-stanza.component';
+import { LuciStanzaComponent } from './Component/luci-stanza/luci-stanza.component';
+import { ModificareIlDomComponent } from './Component/modificare-il-dom/modificare-il-dom.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { LuciStanzaComponent } from './component/luci-stanza/luci-stanza.compone
     NavbarComponent,
     ListaMetroComponent,
     LuciStanzaComponent,
+    ModificareIlDomComponent,
   ],
   imports: [
     BrowserModule,
