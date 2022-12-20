@@ -7,6 +7,8 @@ import { NavbarComponent } from './Component/navbar/navbar.component';
 import { ListaMetroComponent } from './Component/lista-metro/lista-metro.component';
 import { LuciStanzaComponent } from './Component/luci-stanza/luci-stanza.component';
 import { ModificareIlDomComponent } from './Component/modificare-il-dom/modificare-il-dom.component';
+import { DatePipeComponent } from './Component/date-pipe/date-pipe.component';
+import { TimeLeftTrainPipe } from './pipe/time-left-train.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { ModificareIlDomComponent } from './Component/modificare-il-dom/modifica
     ListaMetroComponent,
     LuciStanzaComponent,
     ModificareIlDomComponent,
+    DatePipeComponent,
+    TimeLeftTrainPipe,
   ],
   imports: [
     BrowserModule,

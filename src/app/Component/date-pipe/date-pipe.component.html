@@ -1,0 +1,40 @@
+<div>
+  <h3> Esempio pipe con le date </h3>
+  <p> {{ dataoggi | date:'shortTime'}}</p>
+  <p> {{ dataoggi | date:'mediumDate'}}</p>
+  <p> mostro GG Mese YYYY </p>
+  <p> {{ dataoggi | date:'d MMMM y'}}</p>
+  <p> mostro l'ora HH:MM:SS </p>
+  <p> {{ dataoggi | date:'h : m : s '}}</p>
+  <hr>
+
+  <h3> Esempio pipe Upper Case </h3>
+  <p> {{ stringaTest | uppercase }} </p>
+
+  <h3> Esempio pipe lower case </h3>
+  <p> {{ stringaTest | lowercase }} </p>
+
+  <h3> Esempio pipe numero con virngola  </h3>
+  <p> {{ numeroTest | number:'2.1-2' }} </p>
+  <p> {{ numeroTest2 | number:'2.1-2' }} </p>
+  <!-- dopo number andiamo a passare :
+  2 : e il numero di decimali interi , lo si nota perche prima del punto
+  1-2 : e il numero di decimali dopo la virgola , il secondo decimale dopo la virgola e 0 il numero saro arrotonado togliendolo -->
+
+  <h3> Esempio pipe numero con virngola  </h3>
+  <p> {{ numeroTest3 | percent }} </p>
+
+  <h3> Esempio pipe numero con virngola 2   </h3>
+  <p> {{ numeroTest3 | percent:'1.1' }} </p>
+
+  <h3> Esempio pipe numero con virngola 3   </h3>
+  <p> {{ numeroTest3 | percent:'1.1-2' }} </p>
+
+  <h3> Esempio pipe per oggetti json   </h3>
+  <p> {{ objectTest | json  }} </p>
+
+  <h3> Test pipe TimeLeftTrain </h3>
+  <p> Attesa : {{ 123400  }} </p>
+  <p> Attesa con pipe : {{ 123400 | timeLeftTrain  }} </p>
+
+</div>
