@@ -9,6 +9,7 @@ import { LuciStanzaComponent } from './Component/luci-stanza/luci-stanza.compone
 import { ModificareIlDomComponent } from './Component/modificare-il-dom/modificare-il-dom.component';
 import { DatePipeComponent } from './Component/date-pipe/date-pipe.component';
 import { TimeLeftTrainPipe } from './pipe/time-left-train.pipe';
+import { NewsComponent } from './Component/news/news.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { TimeLeftTrainPipe } from './pipe/time-left-train.pipe';
     ModificareIlDomComponent,
     DatePipeComponent,
     TimeLeftTrainPipe,
+    NewsComponent,
   ],
   imports: [
     BrowserModule,
