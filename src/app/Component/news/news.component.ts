@@ -23,4 +23,10 @@ export class NewsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  //definisco il metodo dettaglio che riceve un id notozia
+  dettaglio(idNews:number){
+    alert('Id Notizia : ' + idNews )
+
+  }
+
 }

@@ -1,0 +1,26 @@
+<div class="tastiera">
+  <h1> Eventi tastiera : </h1>
+    <input type="text" (keyup)="checkTasto($event)">
+      <table>
+        <thead>
+          <tr>
+            <th>
+              Tasti premuti
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- evento tastiera equivale al premere un tasto sulla tastiera -->
+          <tr *ngFor="let eventotastiera of eventiTastiera, let i=index">
+            <td>  {{ i + 1 +')' }} {{ eventotastiera.key }} </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>
+
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+</div>

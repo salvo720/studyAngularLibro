@@ -10,6 +10,7 @@ import { ModificareIlDomComponent } from './Component/modificare-il-dom/modifica
 import { DatePipeComponent } from './Component/date-pipe/date-pipe.component';
 import { TimeLeftTrainPipe } from './pipe/time-left-train.pipe';
 import { NewsComponent } from './Component/news/news.component';
+import { TastieraComponent } from './Component/tastiera/tastiera/tastiera.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NewsComponent } from './Component/news/news.component';
     DatePipeComponent,
     TimeLeftTrainPipe,
     NewsComponent,
+    TastieraComponent,
   ],
   imports: [
     BrowserModule,

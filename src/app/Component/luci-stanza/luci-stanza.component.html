@@ -4,7 +4,7 @@
 <!-- NOTA Bene : ngIF , nota che e stata messa una condizione , e poi ; else showluce , showluce ,
   fa riferimento a una variabile locale che viene definita sotto con #showLuce , con il # , che e il blocco
 che sara chiamata quando si verifica un else   -->
-    <li *ngFor="let luciSingole of lucidb">
+    <li *ngFor="let luciSingole of lucidb" (mousedown)="OnOFF(luciSingole)">
       <i *ngIf="luciSingole.stato == 'OFF' ; else showLuce" class="material-icons">lightbulb_outline </i>
       {{ luciSingole.stanza }}
 
