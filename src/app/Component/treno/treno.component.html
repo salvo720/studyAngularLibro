@@ -1,0 +1,10 @@
+<div class="listaTreni">
+  <ul>
+    <li>
+      <app-metro *ngFor="let metro of listaMetro" [datiIn]="metro" [ora]="now" (click)="setMetro(metro)"></app-metro>
+    </li>
+  </ul>
+</div>
+
+<!-- aggiungo il componente del dettaglio  -->
+<app-dettagli-treno [treno]="trenoSelezionato"></app-dettagli-treno>
