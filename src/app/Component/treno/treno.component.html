@@ -1,7 +1,13 @@
 <div class="listaTreni">
   <ul>
     <li>
-      <app-metro *ngFor="let metro of listaMetro" [datiIn]="metro" [ora]="now" (click)="setMetro(metro)"></app-metro>
+      <app-metro *ngFor="let metro of listaMetro"
+      [datiIn]="metro"
+      [ora]="nowToday"
+      (click)="setMetro(metro)"
+      (inPartenza)="partiti($event)"
+      >
+    </app-metro>
     </li>
   </ul>
 </div>

@@ -11,11 +11,14 @@ import { LISTAMSG } from 'src/app/model/dati/LISTAMSG';
 })
 export class TrenoComponent implements OnInit {
   listaMetro: IMetro[] ;
-  now : number
+  nowToday : number
   trenoSelezionato : IMetro
+  treniPartiti : string
   constructor() {
-    this.listaMetro= []
-    this.now = new Date().getTime();
+    this.listaMetro= [];
+    this.treniPartiti= '';
+    this.nowToday = new Date().getSeconds() + (new Date().getMinutes()*60) + ((new Date().getHours()*60)*60);
+
   }
 
   ngOnInit(): void {
@@ -24,6 +27,10 @@ export class TrenoComponent implements OnInit {
 
   setMetro(treno){
     this.trenoSelezionato = treno;
+  }
+
+  partiti(id:string){
+    this.treniPartiti = ' | ' + id
   }
 
 }

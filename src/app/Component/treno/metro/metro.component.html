@@ -1,5 +1,7 @@
-<div class="metro">
+<div class="metro" [ngStyle]="stato">
   <h2> Metro : </h2>
   <p> Linea : {{ datiIn.linea }} </p>
   <p> Tempo : {{ datiIn.tempo }} </p>
+  <p> Attesa : {{ attesa | timeLeftTrain }}</p>
+  <hr/>
 </div>
