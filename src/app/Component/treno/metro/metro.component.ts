@@ -25,7 +25,7 @@ export class MetroComponent implements OnInit {
     this.attesa = this.oraPartenza - this.ora;
     let x = setInterval(()=>{
       this.attesa -= 1000;
-      console.log('this.oraPartenza :' + this.oraPartenza);
+      // console.log('this.oraPartenza :' + this.oraPartenza);
 
       if(this.attesa<=0){
         // blocco il timer e mando l'evento in uscita

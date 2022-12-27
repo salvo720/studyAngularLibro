@@ -9,10 +9,11 @@ import { ModificareIlDomComponent } from './Component/modificare-il-dom/modifica
 import { DatePipeComponent } from './Component/date-pipe/date-pipe.component';
 import { TimeLeftTrainPipe } from './pipe/time-left-train.pipe';
 import { NewsComponent } from './Component/news/news.component';
-import { TastieraComponent } from './Component/tastiera/tastiera/tastiera.component';
+import { TastieraComponent } from './Component/tastiera/tastiera.component';
 import { MetroComponent } from './Component/treno/metro/metro.component';
 import { TrenoComponent } from './Component/treno/treno.component';
 import { DettagliTrenoComponent } from './Component/treno/dettagli-treno/dettagli-treno.component';
+import { PopupComponent } from './Component/popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DettagliTrenoComponent } from './Component/treno/dettagli-treno/dettagl
     MetroComponent,
     TrenoComponent,
     DettagliTrenoComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
