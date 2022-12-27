@@ -14,6 +14,10 @@ import { MetroComponent } from './Component/treno/metro/metro.component';
 import { TrenoComponent } from './Component/treno/treno.component';
 import { DettagliTrenoComponent } from './Component/treno/dettagli-treno/dettagli-treno.component';
 import { PopupComponent } from './Component/popup/popup.component';
+import { LoginComponent } from './Component/login/login.component';
+import { PreferitiComponent } from './Component/preferiti/preferiti.component';
+import { TestngComponent } from './Component/testng/testng.component';
+import { Error404Component } from './Component/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { PopupComponent } from './Component/popup/popup.component';
     TrenoComponent,
     DettagliTrenoComponent,
     PopupComponent,
+    PreferitiComponent,
+    LoginComponent,
+    TestngComponent,
+    Error404Component,
   ],
   imports: [
     BrowserModule,

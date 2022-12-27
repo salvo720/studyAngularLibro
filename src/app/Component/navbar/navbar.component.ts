@@ -10,7 +10,7 @@ export class NavbarComponent implements OnInit {
   linkNav : Array<string> ;
 
   constructor() {
-    this.linkNav = [ 'Treni' , 'Preferiti' , 'Login' ];
+    this.linkNav = [ 'Treni in arrivo' , 'Preferiti' , 'Login', 'Test' ];
    }
 
   ngOnInit(): void {
