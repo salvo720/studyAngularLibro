@@ -5,18 +5,14 @@ import { IMetro } from 'src/app/model/interfaces/metro/imetro';
 @Component({
   selector: 'app-dettaglio-treno',
   templateUrl: './dettaglio-treno.component.html',
-  styleUrls: ['./dettaglio-treno.component.css']
+  styleUrls: ['./dettaglio-treno.component.css'],
 })
 export class DettaglioTrenoComponent implements OnInit {
-  @Input() treno:IMetro | undefined
-  menuBack:string
-  constructor() { }
+  menuBack: string;
+
+  constructor() {}
 
   ngOnInit(): void {
+    this.menuBack = 'ON';
   }
-
-  chiudi () : void {
-  this.menuBack= 'ON';
-  }
-
 }
