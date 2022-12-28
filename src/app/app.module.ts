@@ -12,12 +12,15 @@ import { NewsComponent } from './Component/news/news.component';
 import { TastieraComponent } from './Component/tastiera/tastiera.component';
 import { MetroComponent } from './Component/treno/metro/metro.component';
 import { TrenoComponent } from './Component/treno/treno.component';
-import { DettagliTrenoComponent } from './Component/treno/dettagli-treno/dettagli-treno.component';
+import { DettaglioTrenoComponent } from './Component/treno/dettaglio-treno/dettaglio-treno.component';
 import { PopupComponent } from './Component/popup/popup.component';
 import { LoginComponent } from './Component/login/login.component';
 import { PreferitiComponent } from './Component/preferiti/preferiti.component';
 import { TestngComponent } from './Component/testng/testng.component';
 import { Error404Component } from './Component/error404/error404.component';
+import { TrenoGialloComponent } from './Component/treno/treno-giallo/treno-giallo.component';
+import { TrenoRossoComponent } from './Component/treno/treno-rosso/treno-rosso.component';
+import { DettaglioComponent } from './Component/treno/dettaglio/dettaglio.component';
 
 @NgModule({
   declarations: [
@@ -31,12 +34,15 @@ import { Error404Component } from './Component/error404/error404.component';
     TastieraComponent,
     MetroComponent,
     TrenoComponent,
-    DettagliTrenoComponent,
+    DettaglioTrenoComponent,
     PopupComponent,
     PreferitiComponent,
     LoginComponent,
     TestngComponent,
     Error404Component,
+    TrenoRossoComponent,
+    TrenoGialloComponent,
+    DettaglioComponent,
   ],
   imports: [
     BrowserModule,

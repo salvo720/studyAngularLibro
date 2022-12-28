@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { IMetro } from 'src/app/model/interfaces/metro/imetro';
 
@@ -14,7 +15,7 @@ export class TrenoComponent implements OnInit {
   nowToday : number
   trenoSelezionato : IMetro
   treniPartiti : string
-  constructor() {
+  constructor(private router:Router) {
     this.listaMetro= [];
     this.treniPartiti= '';
     this.nowToday = new Date().getSeconds() + (new Date().getMinutes()*60) + ((new Date().getHours()*60)*60);
@@ -25,8 +26,9 @@ export class TrenoComponent implements OnInit {
     this.listaMetro = LISTAMETRO;
   }
 
-  setMetro(treno){
-    this.trenoSelezionato = treno;
+  setMetro(id:string){
+    this.router.navigate(['TreniInArrivo/Dettaglio',id]);
+    // this.trenoSelezionato = treno;
   }
 
   partiti(id:string){

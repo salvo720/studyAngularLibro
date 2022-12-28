@@ -11,7 +11,7 @@
       <app-metro *ngFor="let metro of listaMetro"
       [datiIn]="metro"
       [ora]="nowToday"
-      (click)="setMetro(metro)"
+      (click)="setMetro(metro.idt)"
       (inPartenza)="partiti($event)"
       >
     </app-metro>
@@ -20,4 +20,4 @@
 </div>
 
 <!-- aggiungo il componente del dettaglio  -->
-<app-dettagli-treno [treno]="trenoSelezionato"></app-dettagli-treno>
+<!-- <app-dettaglio-treno [treno]="trenoSelezionato"></app-dettaglio-treno> -->
