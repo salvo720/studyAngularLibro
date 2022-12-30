@@ -1,5 +1,9 @@
-<div class="dettagliOTreno">
+<div *ngIf="treno"  class="dettagliOTreno">
   <h1> Dettaglio treno </h1>
-  <p> ID : {{ idtreno }}</p>
-  <p> Lista Chat ...</p>
+  <p> Treno Linea : {{ treno.linea }}</p>
+  <p> ID : {{ treno.idt }}</p>
+</div>
+
+<div class="dettagliOTreno">
+  <h2> Lista Chat ... </h2>
 </div>

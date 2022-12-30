@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { PopupComponent } from './Component/popup/popup.component';
+import { PopupComponent } from './component/popup/popup.component';
 
 @Component({
   selector: 'app-root',

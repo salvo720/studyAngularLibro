@@ -1,14 +1,14 @@
-import { DettaglioTrenoComponent } from './Component/treno/dettaglio-treno/dettaglio-treno.component';
-import { TrenoGialloComponent } from './Component/treno/treno-giallo/treno-giallo.component';
-import { TrenoRossoComponent } from './Component/treno/treno-rosso/treno-rosso.component';
-import { Error404Component } from './Component/error404/error404.component';
-import { TestngComponent } from './Component/testng/testng.component';
-import { LoginComponent } from './Component/login/login.component';
-import { PreferitiComponent } from './Component/preferiti/preferiti.component';
-import { TrenoComponent } from './Component/treno/treno.component';
+import { DettaglioTrenoComponent } from './component/treno/dettaglio-treno/dettaglio-treno.component';
+import { TrenoGialloComponent } from './component/treno/treno-giallo/treno-giallo.component';
+import { TrenoRossoComponent } from './component/treno/treno-rosso/treno-rosso.component';
+import { Error404Component } from './component/error404/error404.component';
+import { TestngComponent } from './component/testng/testng.component';
+import { LoginComponent } from './component/login/login.component';
+import { PreferitiComponent } from './component/preferiti/preferiti.component';
+import { TrenoComponent } from './component/treno/treno.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DettaglioComponent } from './Component/treno/dettaglio/dettaglio.component';
+import { DettaglioComponent } from './component/treno/dettaglio/dettaglio.component';
 
 const routes: Routes = [
   { path: 'TreniInArrivo', component: TrenoComponent },

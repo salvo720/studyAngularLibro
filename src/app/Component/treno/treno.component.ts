@@ -4,6 +4,7 @@ import { IMetro } from 'src/app/model/interfaces/metro/imetro';
 
 import { LISTAMETRO } from 'src/app/model/dati/LISTAMETRO';
 import { LISTAMSG } from 'src/app/model/dati/LISTAMSG';
+import { TreniService } from 'src/app/service/treni/treni.service';
 
 @Component({
   selector: 'app-treno',
@@ -15,7 +16,7 @@ export class TrenoComponent implements OnInit {
   nowToday : number
   trenoSelezionato : IMetro
   treniPartiti : string
-  constructor(private router:Router) {
+  constructor(private router:Router , private treniService:TreniService) {
     this.listaMetro= [];
     this.treniPartiti= '';
     this.nowToday = new Date().getSeconds() + (new Date().getMinutes()*60) + ((new Date().getHours()*60)*60);
@@ -23,7 +24,7 @@ export class TrenoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listaMetro = LISTAMETRO;
+    this.listaMetro = this.treniService.getListaMetro();
   }
 
   setMetro(id:string){
