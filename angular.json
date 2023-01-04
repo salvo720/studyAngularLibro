@@ -70,7 +70,8 @@
               "browserTarget": "studyAngularLibro:build:development"
             }
           },
-          "options":{
+          "options": {
+            "browserTarget": "nome-applicazione:build",
             "proxyConfig": "proxy.conf.json"
           },
           "defaultConfiguration": "development"

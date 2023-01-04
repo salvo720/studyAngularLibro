@@ -16,6 +16,7 @@ export class TrenoComponent implements OnInit {
   nowToday : number
   trenoSelezionato : IMetro
   treniPartiti : string
+  errorMsg : any
   constructor(private router:Router , private treniService:TreniService) {
     this.listaMetro= [];
     this.treniPartiti= '';
@@ -24,7 +25,15 @@ export class TrenoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.listaMetro = this.treniService.getListaMetro();
+    // this.listaMetro = this.treniService.getListaMetro();
+    this.getListaMetroObservable();
+  }
+
+  getListaMetroObservable(){
+    this.treniService.getListaMetroObservable().subscribe(
+      risp => this.listaMetro = risp ,
+      error => this.errorMsg = error
+    );
   }
 
   setMetro(id:string){

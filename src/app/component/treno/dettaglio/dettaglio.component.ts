@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { IMetro } from 'src/app/model/interfaces/metro/imetro';
 import { TreniService } from 'src/app/service/treni/treni.service';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +13,7 @@ export class DettaglioComponent implements OnInit {
   idtreno: string;
   menuBack : string;
   treno : IMetro
+  errorMsg;
   constructor(private route: ActivatedRoute , private treniService:TreniService) {
   }
 
@@ -30,7 +32,15 @@ export class DettaglioComponent implements OnInit {
     // sara sempre valorizzato non null
 
 
-    this.getDettaglioMetro(this.idtreno);
+    this.getDettaglioMetroObservable(this.idtreno);
+  }
+
+
+  private getDettaglioMetroObservable(idtr:string) {
+    this.treniService.getDettaglioMetroObservable(idtr).subscribe(
+        risp => this.treno = risp[0] ,
+        error => this.errorMsg = error
+      );
   }
 
   getDettaglioMetro(idtr:string){
