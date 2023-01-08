@@ -3,11 +3,11 @@ import { isEmpty } from 'rxjs';
 import { IMetro } from 'src/app/model/interfaces/metro/imetro';
 
 @Component({
-  selector: 'app-dettaglio-treno',
-  templateUrl: './dettaglio-treno.component.html',
-  styleUrls: ['./dettaglio-treno.component.css'],
+  selector: 'app-chat-treno',
+  templateUrl: './chat-treno.component.html',
+  styleUrls: ['./chat-treno.component.css'],
 })
-export class DettaglioTrenoComponent implements OnInit {
+export class ChatTrenoComponent implements OnInit {
   menuBack: string;
 
   constructor() {}

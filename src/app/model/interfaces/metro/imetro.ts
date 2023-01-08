@@ -1,8 +1,9 @@
 export interface IMetro {
 
-  idt : string ,             // id treno
-  linea : string ,           // numero linea
-  numerochatting : number ,  // numermo passeggeri in chat
-  tempo : number ,          // orari partenza
-
+  id : number ,              // id treno
+  linea : string ,            // numero linea
+  direzione : string ,        // direzione treno
+  numerochatting : number ,   // numermo passeggeri in chat
+  tempo : number ,            // orari partenza
+  stazione : string           // stazione attuale
 }

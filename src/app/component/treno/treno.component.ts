@@ -2,8 +2,6 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { IMetro } from 'src/app/model/interfaces/metro/imetro';
 
-import { LISTAMETRO } from 'src/app/model/dati/LISTAMETRO';
-import { LISTAMSG } from 'src/app/model/dati/LISTAMSG';
 import { TreniService } from 'src/app/service/treni/treni.service';
 
 @Component({
@@ -36,12 +34,14 @@ export class TrenoComponent implements OnInit {
     );
   }
 
-  setMetro(id:string){
+  setMetro(id:number){
+    //TODO: qui si perde l'id da qualche parte bisogna capire dove e sistemarlo fermo  a pag 191
+    console.log(id)
     this.router.navigate(['TreniInArrivo/Dettaglio',id]);
     // this.trenoSelezionato = treno;
   }
 
-  partiti(id:string){
+  partiti(id:number){
     this.treniPartiti = ' | ' + id
   }
 

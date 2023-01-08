@@ -39,4 +39,6 @@ public partial class DbAngularLibroContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public DbSet<backEndCsharp.Models.MessaggiChat> MessaggiChat { get; set; }
 }

@@ -10,7 +10,7 @@ export class MetroComponent implements OnInit {
   @Input() datiIn: IMetro;
   @Input('ora') ora: number;
   // marchio la propieta inPartenza , come D'uscita
-  @Output() inPartenza = new EventEmitter<string>();
+  @Output() inPartenza = new EventEmitter<number>();
 
   stato: object;
   oraPartenza: number;
@@ -31,7 +31,7 @@ export class MetroComponent implements OnInit {
         // blocco il timer e mando l'evento in uscita
         clearInterval(x);
         //notifico il cambio di dato passando l'id del treno
-        this.inPartenza.emit(this.datiIn.idt);
+        this.inPartenza.emit(this.datiIn.id);
         //modifico lo stato di visualizzazione del componente
         this.stato= {'display':'none'};
       }

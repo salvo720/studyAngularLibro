@@ -1,4 +1,4 @@
-import { DettaglioTrenoComponent } from './component/treno/dettaglio-treno/dettaglio-treno.component';
+import { ChatTrenoComponent } from './component/treno/chat-treno/chat-treno.component';
 import { TrenoGialloComponent } from './component/treno/treno-giallo/treno-giallo.component';
 import { TrenoRossoComponent } from './component/treno/treno-rosso/treno-rosso.component';
 import { Error404Component } from './component/error404/error404.component';
@@ -12,7 +12,7 @@ import { DettaglioComponent } from './component/treno/dettaglio/dettaglio.compon
 
 const routes: Routes = [
   { path: 'TreniInArrivo', component: TrenoComponent },
-  { path: 'TreniInArrivo/Dettaglio', component: DettaglioTrenoComponent , children : [
+  { path: 'TreniInArrivo/Dettaglio', component: ChatTrenoComponent , children : [
     {path: '', redirectTo: 'Errore' , pathMatch:'full'},
     {path: 'Gialla', component: TrenoGialloComponent  },
     {path: 'Rossa', component: TrenoRossoComponent  },

@@ -25,9 +25,21 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" asp-area="" asp-controller="First" asp-action="index">First</a>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="First" asp-action="index">First</a>
                         </li>
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Treno" asp-action="index">Treno</a>
+                        </li>
+                        <div class="dropdown">
+                          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            api
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="nav-link text-dark" asp-area="" asp-controller="api" asp-action="ApiTreno"> Lista treni </a></li>
+								<li><a class="nav-link text-dark" asp-area="" asp-controller="api" asp-action="ApiMessaggiChat"> Lista Messaggi Chat </a></li>
+                          </ul>
+                      </div>
                     </ul>
                 </div>
             </div>

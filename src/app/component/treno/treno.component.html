@@ -11,7 +11,7 @@
       <app-metro *ngFor="let metro of listaMetro"
       [datiIn]="metro"
       [ora]="nowToday"
-      (click)="setMetro(metro.idt)"
+      (click)="setMetro(metro.id)"
       (inPartenza)="partiti($event)"
       >
     </app-metro>
@@ -21,11 +21,5 @@
 
   <p> {{ treniPartiti }}</p>
 
-  <div *ngFor="let metro2 of listaMetro">
-    <p> {{ metro2.idt}}</p>
-    <p> {{ metro2.linea}}</p>
-    <p> {{ metro2.idt}}</p>
-    <p> {{ metro2.idt}}</p>
-  </div>
-  <div> {{ listaMetro | json}}</div>
+  <!-- <div> {{ listaMetro | json}}</div> -->
 </div>

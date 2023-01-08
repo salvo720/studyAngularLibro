@@ -1,9 +1,10 @@
-<div *ngIf="treno"  class="dettagliOTreno">
+<div *ngIf="treno"  class="dettaglioTreno">
   <h1> Dettaglio treno </h1>
   <p> Treno Linea : {{ treno.linea }}</p>
-  <p> ID : {{ treno.idt }}</p>
+  <p> ID : {{ treno.id }}</p>
 </div>
 
 <div class="dettagliOTreno">
-  <h2> Lista Chat ... </h2>
+  <h2> Lista chat : </h2>
+  <app-chat *ngFor="let chat of listaChat" [msgIn]="chat"></app-chat>
 </div>

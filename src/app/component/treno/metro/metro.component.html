@@ -1,7 +1,10 @@
 <div class="metro" [ngStyle]="stato">
   <h2> Metro : </h2>
+  <p> Linea : {{ datiIn.id }} </p>
   <p> Linea : {{ datiIn.linea }} </p>
+  <p> Direzione : {{ datiIn.direzione }} </p>
   <p> Tempo : {{ datiIn.tempo }} </p>
   <p> Attesa : {{ attesa | timeLeftTrain }}</p>
+  <p> Stazione : {{ datiIn.stazione }} </p>
   <hr/>
 </div>
