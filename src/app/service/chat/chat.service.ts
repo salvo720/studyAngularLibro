@@ -50,8 +50,10 @@ export class ChatService {
   }
 
   setChatPreferiti(updateStato:CMessaggio) {
-    return this.http.put<Number>(this.apiPreferitiUrlChat + updateStato.id , updateStato).pipe(
-      map( (risposta:any ) => risposta) ,
+      // aggiungendo
+      let responseHeader :object = { observe: 'response' }
+     return this.http.put<Number>(this.apiPreferitiUrlChat + updateStato.id , updateStato , responseHeader).pipe(
+      map( (risposta:any ) => risposta.status) ,
       catchError(this.handleErrorObs)
       );
   }

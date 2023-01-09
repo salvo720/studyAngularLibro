@@ -31,19 +31,15 @@ export class ChatComponent implements OnInit {
     };
 
     this.chatService.setChatPreferiti(UpdateStato).subscribe(
-      // TODO: da sistemare errore qui quando si aggiunge o si toglie un mesaggio dai preferiti ,
-      //  errore : Cannot read properties of null (reading 'stato')
-      // questo subscribe non worka
+      // commentato perche non worka this.msgIn.stato = statoprec;
       (risp:any) => {
-        console.log('risp : ' + risp)
-        console.log('UpdateStato[] : ' + UpdateStato['stato'])
-        if (risp != UpdateStato['stato']) {
+        if (risp != 204 && 200) { // status code  put reqeust e ok
           // risposta negativa dal server si e verificato un errore
-          alert('Errore');
-          this.msgIn.stato = statoprec;
+          console.log('Errore , nella richiesta risposta negativa dal server si e verificato un errore  ');
+          // this.msgIn.stato = statoprec;
         } else {
-          alert('Ok');
-          this.msgIn.stato = newStato;
+          console.log('Ok , richiesta mandata e risposta positiva dal server ');
+          // this.msgIn.stato = newStato;
         }
       },
       (error) => (this.errorMsg = error)
