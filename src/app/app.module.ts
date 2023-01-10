@@ -1,8 +1,14 @@
+// Form e richieste http
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';  // Tempalte Driven
+import { ReactiveFormsModule } from '@angular/forms';  // Reactive Form
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http'
 
+//Routing
 import { AppRoutingModule } from './app-routing.module';
+
+// component
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { LuciStanzaComponent } from './component/luci-stanza/luci-stanza.component';
@@ -23,6 +29,7 @@ import { TrenoRossoComponent } from './component/treno/treno-rosso/treno-rosso.c
 import { DettaglioComponent } from './component/treno/dettaglio/dettaglio.component';
 import { ChatComponent } from './component/chat/chat.component';
 import { ChatTrenoComponent } from './component/treno/chat-treno/chat-treno.component';
+import { FormIscrivitiComponent } from './component/form-iscriviti/form-iscriviti.component';
 
 @NgModule({
   declarations: [
@@ -46,9 +53,12 @@ import { ChatTrenoComponent } from './component/treno/chat-treno/chat-treno.comp
     TrenoGialloComponent,
     DettaglioComponent,
     ChatComponent,
+    FormIscrivitiComponent,
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
   ],

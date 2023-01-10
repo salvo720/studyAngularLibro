@@ -1,0 +1,14 @@
+<p>form-iscriviti works!</p>
+
+<!-- nota che all'evento ngsubmit passiamo la variabile locale #mioform  -->
+<form #mioForm="ngForm" (ngSubmit)="invio(mioForm)">
+  <label for="idNome"> Nome </label>
+  <input [(ngModel)]="nome_modello" type="text" name="Nome" id="idNome" placeholder="inserisci il tuo nome" required> <br>
+  <!-- puoi riscrivere la riga sopra , nota che invece di ngmodule vienen usato (input) e [value] -->
+  <!-- <input [value]="nome_modello" (input)="nomecampo=$event.target.value " type="text" name="nome" id="idNome" placeholder="inserisci il tuo nome" required> -->
+  <label for="idEmail"> Email </label>
+  <input [(ngModel)]="email_modello" type="email" name="Email" id="idEmail" placeholder="inserisci il tuo nome" required> <br>
+  <label for="idPassword"> Password </label>
+  <input [(ngModel)]="password_modello" type="password" name="Password" id="idPassword" placeholder="inserisci il tuo nome" required> <br>
+  <button type="submit" [disabled]="!mioForm.form.valid" > Invia </button>
+</form>
