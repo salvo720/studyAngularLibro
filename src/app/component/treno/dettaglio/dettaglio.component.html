@@ -8,3 +8,6 @@
   <h2> Lista chat : </h2>
   <app-chat *ngFor="let chat of listaChat" [msgIn]="chat"></app-chat>
 </div>
+<!-- i due pezzi vengono esegiti uno dopo l'altro , andando a azzerrare msg , dopo aver inviato i dati  -->
+<input type="text" #msg required>
+<button (click)="invioMsg(msg.value);msg.value=''"> Invia </button>

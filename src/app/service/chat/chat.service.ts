@@ -25,13 +25,13 @@ export class ChatService {
   }
 
   sendChatMsgObservable(obj: CMessaggio): Observable<CMessaggio> {
-    let options: object = {
-      idtreno: obj.idt,
-      idUtente: obj.idu,
-      messaggio: obj.testo,
-    };
+    // let options: object = {
+    //   idtreno: obj.idt,
+    //   idUtente: obj.idu,
+    //   messaggio: obj.testo,
+    // };
     return this.http
-      .post<CMessaggio>(this.apiPostUrlChat, options)
+      .post<CMessaggio>(this.apiPostUrlChat, obj)
       .pipe(
         map(
           (risposta: any) => risposta['data'],

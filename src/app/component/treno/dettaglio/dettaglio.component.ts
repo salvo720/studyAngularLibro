@@ -13,18 +13,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DettaglioComponent implements OnInit {
   idtreno: string;
-  menuBack : string;
-  treno : IMetro
+  menuBack: string;
+  treno: IMetro;
   errorMsg;
-  listaChat:CMessaggio[]
-  constructor(private route: ActivatedRoute , private treniService:TreniService , private chatService:ChatService) {
-  }
+  listaChat: CMessaggio[];
+  chatMsg: CMessaggio;
+  constructor(
+    private route: ActivatedRoute,
+    private treniService: TreniService,
+    private chatService: ChatService
+  ) {}
 
   ngOnInit(): void {
     this.idtreno = this.route.snapshot.paramMap.get('id')!;
     this.getDettaglioMetroObservable(this.idtreno);
 
-     //oppure in alternativa su un evento
+    //oppure in alternativa su un evento
     /*
     this.route.paramMap.subscribe(params =>{
       this.idtreno = params.get('id')!;
@@ -36,29 +40,47 @@ export class DettaglioComponent implements OnInit {
     // sara sempre valorizzato non null
 
     this.getListaChatObservable(this.idtreno);
-
-
   }
 
-
-
-  getDettaglioMetroObservable(idt:string) {
+  getDettaglioMetroObservable(idt: string) {
     this.treniService.getDettaglioMetroObservable(idt).subscribe(
-        risp => this.treno = risp[0] ,
-        error => this.errorMsg = error
-      );
-  }
-
-  getListaChatObservable(idt:string){
-    return this.chatService.getListaChatObservable(idt).subscribe(
-      risp => this.listaChat = risp,
-      error => this.errorMsg = error
+      (risp) => (this.treno = risp[0]),
+      (error) => (this.errorMsg = error)
     );
-
   }
 
-  getDettaglioMetro(idtr:string){
-   this.treno =  this.treniService.getDettaglioMetro(idtr);
+  getListaChatObservable(idt: string) {
+    return this.chatService.getListaChatObservable(idt).subscribe(
+      (risp) => (this.listaChat = risp),
+      (error) => (this.errorMsg = error)
+    );
   }
 
+  getDettaglioMetro(idtr: string) {
+    this.treno = this.treniService.getDettaglioMetro(idtr);
+  }
+
+  // 1) costruisco l'oggeto messaggio con i dati noti
+  invioMsg(testoMsg: string) {
+    // utente di test generico impostao a 99 , e idm impostato a 0
+    this.chatMsg = {
+      id: 0,
+      idm: '0',
+      idt: this.idtreno,
+      idu: '99',
+      testo: testoMsg,
+      stato: 0,
+    };
+
+    this.sendMsgObservable(this.chatMsg);
+  }
+
+// 2) Attendo che lìapi risponda con con oggetto messaggio
+  sendMsgObservable(msg : CMessaggio){
+    this.chatService.sendChatMsgObservable(msg).subscribe(
+      // la riga successiva e per aggiornare il contenitore dei dati senza agiornare la pagina
+        risposta => this.listaChat.push(risposta[0]),
+        error => this.errorMsg = error
+    );
+  }
 }
