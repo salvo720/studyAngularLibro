@@ -1,0 +1,58 @@
+<!-- diamo dei nomi identificativi alla variabile formGrop perche nella stesa pagina possiamo avere piu form e quindi piu formGroup  -->
+<form [formGroup]="formIscrizione" (ngSubmit)="invio()">
+
+  <label for="idNome"> Nome </label>
+  <input formControlName="nome" type="text" name="nome" id="idNome" placeholder="inserisci il tuo nome" required> <br>
+
+  <label for="idEmail"> Email </label>
+  <input formControlName="email" type="email" name="email" id="idEmail" placeholder="inserisci il tuo nome" maxlength="64" required> <br>
+
+  <label for="idPassword"> Password </label>
+  <input formControlName="password" type="password" name="password" id="idPassword" placeholder="inserisci il tuo nome" required> <br>
+
+  <!-- vediamo come possiamo fare la select  -->
+  <label for="idProvincia"> Provincia </label>
+  <select formControlName="provincia" id="idProvincia">
+    <option *ngFor="let prov of provincie" value="{{ prov.valore }}"> {{ prov.nome }}</option>
+  </select>
+  <br>
+
+
+  <input type="checkbox" id="catA" formControlName="catA">
+  <label for="catA"> categoria A </label>
+
+  <input type="checkbox" id="catB" formControlName="catB">
+  <label for="catB"> categoria B </label><br>
+
+  <label for="idSesso"> Maschio o Femmina </label>
+  <div *ngFor="let genere of sesso">
+    <input type="radio" id="idSesso" formControlName="genere" value="{{genere.valore}}"> {{genere.nome}}
+  </div>
+
+  <button type="submit" [disabled]="formIscrizione.invalid"> Invia </button>
+
+</form>
+
+<!-- metodo 1 accesso alla propieta con metodo .get  -->
+
+<div *ngIf="formIscrizione.get('nome')!.invalid && ( formIscrizione.get('nome')!.dirty || formIscrizione.get('nome')!.touched)"> Campo Nome obbligatorio </div>
+
+<!-- metodo 2 accesso alla propieta con getter  -->
+
+<div *ngIf="email.invalid && ( email.dirty || email.touched)"> Campo Email obbligatorio </div>
+<div *ngIf="password.invalid && ( password.dirty || password.touched)"> Campo Password obbligatorio </div>
+
+
+<!-- metodo 1 per vedere i dati dalla view html  -->
+
+<p> valore in nome : {{ nome.value }}</p>
+<p> valore in email : {{ email.value }}</p>
+<p> valore in password : {{ password.value }}</p>
+<p> valore in provincia : {{ provincia.value }}</p>
+<p> valore in catA : {{ catA.value }}</p>
+<p> valore in catB : {{ catB.value }}</p>
+<p> valore in genere : {{ genere.value }}</p>
+
+<!-- metodo 2 per vedere i dati dalla view html  -->
+
+<p> valori inseriti nel form {{ formIscrizione.value | json }} </p>
