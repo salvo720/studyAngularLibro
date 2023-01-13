@@ -1,4 +1,3 @@
-<p>form-iscriviti works!</p>
 
 <!-- nota che all'evento ngsubmit passiamo la variabile locale #mioform  -->
 <!-- e possibile passare all'evento (ngSubmit)="invio(mioForm.value)" , cosi dalla parte di script possiamo accedere al nome del campo con form.nomeCampo  -->
@@ -17,14 +16,29 @@
   <select name="Provincia1" [(ngModel)]="provincia_modello" id="idProvincia1">
     <option *ngFor="let prov of provincie" value="{{ prov.valore }}"> {{ prov.nome }}</option>
   </select>
+  <br>
+
+  <input type="checkbox" id="catA" name="catA" [(ngModel)]="catA_modello" >
+  <label for="catA"> categoria A </label>
+
+  <input type="checkbox" id="catB" name="catB" [(ngModel)]="catB_modello">
+  <label for="catB"> categoria B </label><br>
+
+  <label for="idSesso"> Maschio o Femmina </label>
+  <div *ngFor="let genere of sesso">
+    <input type="radio" id="idSesso" name="sesso" value="{{genere.valore}}" [(ngModel)]="sesso_modello"> {{genere.nome}}
+  </div>
 
   <button type="submit" [disabled]="!mioForm.form.valid"> Invia </button>
+
 </form>
 
-<p> stati scrivendo nel campo nome : {{ nome_modello }}</p>
-<p> stati scrivendo nel campo email : {{ email_modello }}</p>
-<p> stati scrivendo nel campo password : {{ password_modello }}</p>
-<p> stati scrivendo nel campo provincia : {{ provincia_modello }}</p>
+<p> stai scrivendo nel campo nome : {{ nome_modello }}</p>
+<p> stai scrivendo nel campo email : {{ email_modello }}</p>
+<p> stai scrivendo nel campo password : {{ password_modello }}</p>
+<p> stai scrivendo nel campo catA : {{ catA_modello }}</p>
+<p> stai scrivendo nel campo catB : {{ catB_modello }}</p>
+<p> stai scrivendo nel campo sesso : {{ sesso_modello }}</p>
 
 
 <!-- vediamo come possiamo fare la secect senza  la direttiva ngmodel  -->
