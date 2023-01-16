@@ -31,6 +31,7 @@ import { ChatComponent } from './component/chat/chat.component';
 import { ChatTrenoComponent } from './component/treno/chat-treno/chat-treno.component';
 import { FormIscrivitiComponent } from './component/form-iscriviti/form-iscriviti.component';
 import { FormIscrivitiReactiveComponent } from './component/form-iscriviti-reactive/form-iscriviti-reactive.component';
+import { ObservableComponent } from './component/observable/observable.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { FormIscrivitiReactiveComponent } from './component/form-iscriviti-react
     ChatComponent,
     FormIscrivitiComponent,
     FormIscrivitiReactiveComponent,
+    ObservableComponent,
   ],
   imports: [
     BrowserModule,
