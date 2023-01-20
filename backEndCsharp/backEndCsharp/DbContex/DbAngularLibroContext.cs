@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using backEndCsharp.Models;
@@ -41,4 +41,7 @@ public partial class DbAngularLibroContext : DbContext
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
     public DbSet<backEndCsharp.Models.MessaggiChat> MessaggiChat { get; set; }
+
+    public DbSet<backEndCsharp.Models.Utente> Utente { get; set; }
+    //public DbSet<backEndCsharp.Models.UtentePower> UtentePower { get; set; }
 }
