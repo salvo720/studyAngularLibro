@@ -226,9 +226,15 @@ export class ObservableComponent implements OnInit {
     }, 5000);
   }
 
+  // Operatori pipe() , map() , tap(), filter()
+  OperatoriPipeMapTapFilter(){
+
+
+  }
+
   // ---------------------------------------------------------------------------------------------
 
-  /*
+  /* Classe docs
   Class Observable<T> implements Subscribable {
     static create : Function
     static if : typeof if

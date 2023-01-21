@@ -1,5 +1,6 @@
 <div class="chatComponent">
-  <p> {{ msgIn.idu}}   {{ msgIn.testo}} </p>
+  <a routerLink="/amici/{{msgIn.idu}}"> <img class="imgUserChat" src="./assets/img/{{msgIn.idu}}.jpg" alt=" user immage "></a>
+  <p class="chatText"> {{ msgIn.idu}} {{ msgIn.testo}} </p>
   <span *ngIf="msgIn.stato==1;else show" (click)="setMsgPreferiti(msgIn.id , msgIn.idm,0)">
     <i class="material-icons on">favorite</i>
   </span>
@@ -9,10 +10,10 @@
       <i class="material-icons">favorite_border</i>
     </span>
   </ng-template>
+
+  <span (click)="deleteMsg(msgIn.id)">
+    <i class="material-icons">delete</i>
+  </span>
+
+  <p> {{ errorMsg }}</p>
 </div>
-
-<span (click)="deleteMsg(msgIn.id)">
-  <i class="material-icons">delete</i>
-</span>
-
-<p> {{ errorMsg  }}</p>

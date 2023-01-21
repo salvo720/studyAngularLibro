@@ -1,3 +1,4 @@
+import { InfoComponent } from './component/info/info.component';
 import { ChatTrenoComponent } from './component/treno/chat-treno/chat-treno.component';
 import { TrenoGialloComponent } from './component/treno/treno-giallo/treno-giallo.component';
 import { TrenoRossoComponent } from './component/treno/treno-rosso/treno-rosso.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
     {path: 'Rossa', component: TrenoRossoComponent  },
     {path: ':id', component: DettaglioComponent  },
   ] , },
+  { path: 'amici/:id', component: InfoComponent },
   { path: 'Preferiti', component: PreferitiComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Test', component: TestngComponent },

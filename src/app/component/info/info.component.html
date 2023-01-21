@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<h3> Amici dell'utente con Id : {{ idu }}</h3>
+<div class="infoUser">
+  <ul>
+    <li *ngFor="let amico of listaAmici"> {{ amico.nome }} </li>
+  </ul>
+  <div *ngIf="errorMsg"> {{errorMsg}}</div>
+</div>
