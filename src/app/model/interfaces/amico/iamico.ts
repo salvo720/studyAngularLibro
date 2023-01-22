@@ -1,5 +1,10 @@
 export interface IAmico {
   id:number,
   nome:string,
-  citta:string
+  cognome:string
+  email:string
+  ip:string
+  amicoId:string
+  amici: null
 }
+

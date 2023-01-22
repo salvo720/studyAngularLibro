@@ -12,8 +12,8 @@ export class InfoUserService {
 
 
   getInfoUser(idu:string){
-    return this.http.get<IAmico[]>(this.apiGetUrl+'?idu='+idu).pipe(
-      map((info:any) => info['Amici']),
+    return this.http.get<IAmico[]>(this.apiGetUrl+idu).pipe(
+      map((info:any) => info['amici']),
       catchError(this.handleErrorObs)
     );
   }
