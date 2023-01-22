@@ -19,7 +19,7 @@ const routes: Routes = [
     {path: 'Rossa', component: TrenoRossoComponent  },
     {path: ':id', component: DettaglioComponent  },
   ] , },
-  { path: 'amici/:id', component: InfoComponent },
+  { path: 'Amici/:id', component: InfoComponent },
   { path: 'Preferiti', component: PreferitiComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Test', component: TestngComponent },

@@ -1,0 +1,6 @@
+.imgUserChat{
+  max-width: 32px;
+  max-height:32px;
+  clear:both;
+  flex:0 1 calc(50% - 10px);
+}

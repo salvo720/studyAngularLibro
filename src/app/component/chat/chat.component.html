@@ -1,5 +1,5 @@
 <div class="chatComponent">
-  <a routerLink="/amici/{{msgIn.idu}}"> <img class="imgUserChat" src="./assets/img/{{msgIn.idu}}.jpg" alt=" user immage "></a>
+  <a routerLink="/Amici/{{msgIn.idu}}"> <img class="imgUserChat" src="./assets/img/{{msgIn.idu}}.jpg" alt=" user immage "></a>
   <p class="chatText"> {{ msgIn.idu}} {{ msgIn.testo}} </p>
   <span *ngIf="msgIn.stato==1;else show" (click)="setMsgPreferiti(msgIn.id , msgIn.idm,0)">
     <i class="material-icons on">favorite</i>

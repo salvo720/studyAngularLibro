@@ -1,4 +1,4 @@
-import { catchError, map, throwError } from 'rxjs';
+import { catchError, map, tap, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IAmico } from 'src/app/model/interfaces/amico/iamico';
@@ -13,7 +13,9 @@ export class InfoUserService {
 
   getInfoUser(idu:string){
     return this.http.get<IAmico[]>(this.apiGetUrl+idu).pipe(
+      tap( dato => console.log("Prima : " , dato)),
       map((info:any) => info['amici']),
+      tap( dato => console.log("Dopo : " , dato)),
       catchError(this.handleErrorObs)
     );
   }

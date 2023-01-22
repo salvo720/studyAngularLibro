@@ -3,7 +3,10 @@
 <h3> Amici dell'utente con Id : {{ idu }}</h3>
 <div class="infoUser">
   <ul>
-    <li *ngFor="let amico of listaAmici"> {{ amico.nome }} </li>
+    <li *ngFor="let amico of listaAmici | async ">
+    <a (click)="refresh()" class="linkId" routerLink="/Amici/{{amico.id}}"> <img class="imgUserChat" src="./assets/img/{{amico.id}}.jpg" alt="user image"></a>
+      {{ amico.nome }}
+    </li>
   </ul>
   <div *ngIf="errorMsg"> {{errorMsg}}</div>
 </div>
