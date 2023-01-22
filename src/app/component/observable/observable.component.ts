@@ -10,6 +10,7 @@ import {
   of,
   from,
   observable,
+  Subscription,
 } from 'rxjs';
 
 @Component({
@@ -22,7 +23,7 @@ export class ObservableComponent implements OnInit {
   listametro: any;
   errorMsg: any;
   count: number;
-  clickSubscriber;
+  clickSubscriber:Subscription
   apiGet: string = 'api/ApiTreno';
   film$: Observable<number>;
   abbonamento1;
@@ -30,7 +31,6 @@ export class ObservableComponent implements OnInit {
   film2$: Observable<number>;
   num2: number;
 
-  // clickSubscriber:Subscriber<any>
 
   constructor(private treniService: TreniService, private http: HttpClient) {
     this.count = 0;
@@ -39,10 +39,7 @@ export class ObservableComponent implements OnInit {
 
   ngOnInit(): void {
     this.creazioneObservable();
-    setTimeout(() => {
-      // 30 sec di ritardo cosi da non intralciare gli unicast e i multicast
-      this.EventListenerClickDocument();
-    }, 30000);
+    this.EventListenerClickDocument();
     this.ConversioneEventoInObservable();
     this.ConversioneNumeriStringheOggettiInObservable();
     this.ConversioneArrayInObservable();
@@ -84,15 +81,19 @@ export class ObservableComponent implements OnInit {
 
   EventListenerClickDocument() {
     // monitoro i click sul documento , codice esempio javascript :
+    /*  // commentato perche e gia gestito da angular e vanno in conflitto
     let eventi = document.addEventListener('click', (e) => {
       console.log('eventi da addEventListener', e);
     });
+    */
 
     // monitoro i click sul documento , codice esempio angular   :
+
     let streamclick$: Observable<Event> = fromEvent(document, 'click');
+    console.log('setInterval ogni 3 secondi ', this.count);
     setInterval(() => {
       this.count++;
-      console.log('setInterval ogni 2 secondi ', this.count);
+      // console.log('setInterval ogni 3 secondi ', this.count); // disattivato perche ogni 3 sec e eccessivo
       if (this.count === 3) {
         this.clickSubscriber = streamclick$.subscribe(
           (value) => console.log('ho cliccato'), //obbligatorio
@@ -100,7 +101,7 @@ export class ObservableComponent implements OnInit {
           () => console.log()
         );
       }
-    }, 2000);
+    }, 3000);
   }
 
   // convertire eventi in Observable , Eventi => Obsersavle
@@ -259,6 +260,6 @@ export class ObservableComponent implements OnInit {
   // ---------------------------------------------------------------------------------------------------
 
   ngOnDestroy() {
-    this.clickSubscriber.unsubscribe();
+    //  this.clickSubscriber.unsubscribe();  // commentato perche genera un errore se si cambia la pagina prima che gli observable finiscano
   }
 }

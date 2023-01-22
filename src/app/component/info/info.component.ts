@@ -19,7 +19,7 @@ export class InfoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.idu = this.Route.snapshot.paramMap.get('id')!;
     this.amiciSub = this.infuUserService.getInfoUser(this.idu).subscribe(
-      amici => { this.listaAmici = amici ; console.log("amici",amici)},
+      amici => this.listaAmici = amici ,
       error => this.errorMsg = error,
       () => console.log('Fine')
     );
