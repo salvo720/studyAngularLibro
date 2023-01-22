@@ -81,7 +81,7 @@ export class ObservableComponent implements OnInit {
 
   EventListenerClickDocument() {
     // monitoro i click sul documento , codice esempio javascript :
-    /*  // commentato perche e gia gestito da angular e vanno in conflitto
+      /*  // commentato perche e gia gestito da angular e vanno in conflitto
     let eventi = document.addEventListener('click', (e) => {
       console.log('eventi da addEventListener', e);
     });
