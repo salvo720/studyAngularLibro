@@ -11,6 +11,8 @@ import {
   from,
   observable,
   Subscription,
+  filter,
+  map
 } from 'rxjs';
 
 @Component({
@@ -229,6 +231,26 @@ export class ObservableComponent implements OnInit {
 
   // Operatori pipe() , map() , tap(), filter()
   OperatoriPipeMapTapFilter(){
+    this.keyPress();
+  }
+
+  keyPress(){
+    const KeysDown$ = fromEvent(document,'keydown').pipe(
+      /* code generate error in KeyUtil
+      map((event: any )=> {
+        const name = keyUtil.codeToKey(event.keyCode);
+        if(name!= ''){
+          let keyMap = {}
+          keyMap[name]= event.code();
+          return keyMap;
+        }else{
+          return undefined;
+        }
+      }
+      ),
+      filter((keyMap:any)=> keyMap !== undefined),
+      */
+    );
 
 
   }

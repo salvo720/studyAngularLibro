@@ -11,10 +11,10 @@ export class InfoUserService {
   constructor(private http:HttpClient) { }
 
 
-  getInfoUser(idu:string){
+  getInfoUser(idu:string,citta:string){
     return this.http.get<IAmico[]>(this.apiGetUrl+idu).pipe(
       tap( dato => console.log("Prima : " , dato)),
-      map((info:any) => info['amici']),
+      map((info:any) => info['amici'].filter(amico => amico.citta == citta)),
       tap( dato => console.log("Dopo : " , dato)),
       catchError(this.handleErrorObs)
     );

@@ -11,13 +11,16 @@ import { IAmico } from 'src/app/model/interfaces/amico/iamico';
 })
 export class InfoComponent implements OnInit, OnDestroy {
   amiciSub: Subscription;
-  idu: string;
-  errorMsg: string;
-  listaAmici: Observable<any>;
+  idu: string
+  citta:string
+  errorMsg: string
+  listaAmici: Observable<any>
   constructor(
     private infuUserService: InfoUserService,
     private Route: ActivatedRoute,
-  ) { }
+  ) {
+    this.citta='Milano';
+  }
 
   ngOnInit(): void {
     this.idu = this.Route.snapshot.paramMap.get('id')!;
@@ -26,7 +29,7 @@ export class InfoComponent implements OnInit, OnDestroy {
     //   (error) => (this.errorMsg = error),
     //   () => console.log('Fine')
     // );
-    this.listaAmici = this.infuUserService.getInfoUser(this.idu)
+    this.listaAmici = this.infuUserService.getInfoUser(this.idu,this.citta)
   }
 
   refresh(): void {
