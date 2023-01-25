@@ -25,18 +25,11 @@ export class ObservableComponent implements OnInit {
   listametro: any;
   errorMsg: any;
   count: number;
-  clickSubscriber:Subscription
   apiGet: string = 'api/ApiTreno';
-  film$: Observable<number>;
-  abbonamento1;
-  abbonamento2;
-  film2$: Observable<number>;
-  num2: number;
-
+  clickSubscriber:Subscription
 
   constructor(private treniService: TreniService, private http: HttpClient) {
     this.count = 0;
-    this.num2 = 0;
   }
 
   ngOnInit(): void {
@@ -48,11 +41,6 @@ export class ObservableComponent implements OnInit {
     this.ConversionePromiseInObservable();
     this.ConversioneObservableInPromise();
     this.CreareUnObservableSenzaOperatori();
-    this.ObservableFilmUnicast();
-    setTimeout(() => {
-      // la parte degli unicast parte 15 secondi dopo per evitoare confusione nella console
-      this.ObservableFilmMulticast();
-    }, 15000);
   }
 
   // Observable : e un tipo di risposta che emette valori ( dati o eventi ) nel tempo
@@ -93,6 +81,7 @@ export class ObservableComponent implements OnInit {
 
     let streamclick$: Observable<Event> = fromEvent(document, 'click');
     console.log('setInterval ogni 3 secondi ', this.count);
+
     setInterval(() => {
       this.count++;
       // console.log('setInterval ogni 3 secondi ', this.count); // disattivato perche ogni 3 sec e eccessivo
@@ -104,6 +93,7 @@ export class ObservableComponent implements OnInit {
         );
       }
     }, 3000);
+
   }
 
   // convertire eventi in Observable , Eventi => Obsersavle
@@ -179,56 +169,6 @@ export class ObservableComponent implements OnInit {
     }, 5000);
   }
 
-  ObservableFilmUnicast() {
-    this.film$ = new Observable<number>((subscriber) => {
-      let num = 0;
-      console.log('******** Si e iscritto un nuovo abbonato *********');
-      setInterval(() => {
-        num += 1;
-        subscriber.next(num);
-        if (num > 10) {
-          subscriber.complete();
-        }
-      }, 1000);
-    });
-
-    // primo abbonato
-    let abbonamento1 = this.film$.subscribe((num) =>
-      console.log('1 abbonato Unicast', num)
-    );
-
-    // secondo abbonato , con ritarndo di 5 secondi
-    setTimeout(() => {
-      let abbonamento2 = this.film$.subscribe((num) =>
-        console.log('2 abbonato Unicast', num)
-      );
-    }, 5000);
-  }
-
-  ObservableFilmMulticast() {
-    this.film2$ = new Observable<number>((subscriber) => {
-      setInterval(() => {
-        this.num2 += 1;
-        subscriber.next(this.num2);
-        if (this.num2 > 10) {
-          subscriber.complete();
-        }
-      }, 1000);
-    });
-
-    // primo abbonato
-    let abbonamento1 = this.film2$.subscribe((num2) =>
-      console.log('1 abbonato Multicast', num2)
-    );
-
-    // secondo abbonato , con ritarndo di 5 secondi
-    setTimeout(() => {
-      let abbonamento2 = this.film2$.subscribe((num2) =>
-        console.log('2 abbonato Multicast', num2)
-      );
-    }, 5000);
-  }
-
   // Operatori pipe() , map() , tap(), filter()
   OperatoriPipeMapTapFilter(){
     this.keyPress();
@@ -254,6 +194,16 @@ export class ObservableComponent implements OnInit {
 
 
   }
+
+  // Class EventEmitter definizione
+  /* class EventEmitter<T> extends subject {
+    constructor(isAsync: boolean = false )
+    emit(value?: T)
+    subscribe(generatorOrNext? : any , error?:any , complete?:any )
+  }
+  */
+
+
 
   // ---------------------------------------------------------------------------------------------
 
@@ -282,6 +232,6 @@ export class ObservableComponent implements OnInit {
   // ---------------------------------------------------------------------------------------------------
 
   ngOnDestroy() {
-    //  this.clickSubscriber.unsubscribe();  // commentato perche genera un errore se si cambia la pagina prima che gli observable finiscano
+    if(this.clickSubscriber) this.clickSubscriber.unsubscribe();  // commentato perche genera un errore se si cambia la pagina prima che gli observable finiscano
   }
 }

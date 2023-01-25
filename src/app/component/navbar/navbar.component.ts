@@ -6,12 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  @Input() menuBack: string ;
-  linkNav : Array<string> ;
+  @Input() menuBack: string;
+  linkNav: Array<string>;
 
   constructor() {
-    this.linkNav = [ 'Treni in arrivo' , 'Preferiti' , 'Login', 'Test' ];
-   }
+    this.linkNav = ['Treni in arrivo', 'Preferiti', 'Login', 'Test', 'ObservableUnicast', 'ObservableMulticast', 'ObservableTipi'];
+  }
 
   ngOnInit(): void {
   }

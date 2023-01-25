@@ -33,6 +33,9 @@ import { FormIscrivitiComponent } from './component/form-iscriviti/form-iscrivit
 import { FormIscrivitiReactiveComponent } from './component/form-iscriviti-reactive/form-iscriviti-reactive.component';
 import { ObservableComponent } from './component/observable/observable.component';
 import { InfoComponent } from './component/info/info.component';
+import { ObservableTipiDifferentiComponent } from './component/observable-tipi-differenti/observable-tipi-differenti.component';
+import { ObservableMulticastComponent } from './component/observable/observable-multicast/observable-multicast.component';
+import { ObservableUnicastComponent } from './component/observable/observable-unicast/observable-unicast.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,9 @@ import { InfoComponent } from './component/info/info.component';
     FormIscrivitiReactiveComponent,
     ObservableComponent,
     InfoComponent,
+    ObservableTipiDifferentiComponent,
+    ObservableMulticastComponent,
+    ObservableUnicastComponent,
   ],
   imports: [
     BrowserModule,

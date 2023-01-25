@@ -1,3 +1,6 @@
+import { ObservableUnicastComponent } from './component/observable/observable-unicast/observable-unicast.component';
+import { ObservableMulticastComponent } from './component/observable/observable-multicast/observable-multicast.component';
+import { ObservableTipiDifferentiComponent } from './component/observable-tipi-differenti/observable-tipi-differenti.component';
 import { InfoComponent } from './component/info/info.component';
 import { ChatTrenoComponent } from './component/treno/chat-treno/chat-treno.component';
 import { TrenoGialloComponent } from './component/treno/treno-giallo/treno-giallo.component';
@@ -23,6 +26,9 @@ const routes: Routes = [
   { path: 'Preferiti', component: PreferitiComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Test', component: TestngComponent },
+  { path: 'ObservableUnicast', component: ObservableUnicastComponent },
+  { path: 'ObservableMulticast', component: ObservableMulticastComponent },
+  { path: 'ObservableTipi', component: ObservableTipiDifferentiComponent },
   // pathmatch , va usato quando vogliamo che il match sia esatto e opzionale
   { path: '', redirectTo: '/TreniInArrivo', pathMatch: 'full' },
   //Le seguenti 2 righe servono per  qulunque rotta non trovata quindi andra nella paggina di errore404
