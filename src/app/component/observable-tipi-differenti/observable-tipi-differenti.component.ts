@@ -14,7 +14,7 @@ export class ObservableTipiDifferentiComponent implements OnInit {
     this.TipiObservable();
   }
 
-  TipiObservable(){
+  TipiObservable() {
     /*
     Tipi di observable :
     1) Observable : unicast , crea una copia dei dati
@@ -32,14 +32,14 @@ export class ObservableTipiDifferentiComponent implements OnInit {
     // Definisco un observable hot con valore iniziale a 0
     const behaviorSubject$ = new BehaviorSubject(0);
     subject$.subscribe({
-      next : (v) => console.log(`1 abbonato subject : ${v}`)
+      next: (v) => console.log(`1 abbonato subject : ${v}`)
     });
 
     subject$.next(1);
     subject$.next(2);
 
     subject$.subscribe({
-      next : (v) => console.log(`2 abbonato subject : ${v}`)
+      next: (v) => console.log(`2 abbonato subject : ${v}`)
     });
 
 
@@ -48,7 +48,7 @@ export class ObservableTipiDifferentiComponent implements OnInit {
     // ---------------------- behaviorSubject ------------------------------------------------------------
 
     behaviorSubject$.subscribe({
-      next : (v) => console.log(`1 abbonato behaviorSubject : ${v}`)
+      next: (v) => console.log(`1 abbonato behaviorSubject : ${v}`)
     });
 
 
@@ -56,7 +56,7 @@ export class ObservableTipiDifferentiComponent implements OnInit {
     behaviorSubject$.next(2);
 
     behaviorSubject$.subscribe({
-      next : (v) => console.log(`2 abbonato behaviorSubject : ${v}`)
+      next: (v) => console.log(`2 abbonato behaviorSubject : ${v}`)
     });
 
 
@@ -66,6 +66,38 @@ export class ObservableTipiDifferentiComponent implements OnInit {
     let lastValue = behaviorSubject$.getValue();
     console.log(`lastValue : ${lastValue}`)
 
+
+  }
+
+  floatMapFunction() {
+    /*
+    flatMap()
+    // flatMap nasce per l'esigenza di non dover concatenare piu subscribe e rendere il codice piu leggibile, esempio :
+    // l'azione di subscribe dell'observable piu esterno  fa partire anche il subscribe per tutti gli observable interni ,
+    // garantendo l'intercettazione di tutti i dati
+
+    this.dati.ordiniSubject$.subscribe(
+      num=> { this.http.get('/giacenza/' + num['id'])
+      .subscribe(res=> this.rim=res )
+    });
+
+    utilizzando flatMap():
+     this.dati.ordiniSubject$.pipe(
+      flatMap(num=> this.http.get('/giacenza/' + num['id'])).subscribe(res => this.rim = res )
+     );
+
+    */
+  }
+
+  SwitchMapFunction(){
+    /*
+    switchMap()
+    // switchMap si usa njell'ambito della trasformazione dei flussi , di piu Observble , la peculiarita di switchMap() rispetto a flatMap() :
+    possiamo commutare switch ad un Observable interno , cancellando l'iscrizione precedente .
+    L'operazione di cancellazione e fatta in automatico , non appena arriva un nuovo flusso dall'Observable piu esterno .
+    Non dobbiamo pertanto preoccuparci di cancellare alcuna iscrizione
+    e stato usato sul component dettaglio , nel form di ricerca
+    */
 
   }
 

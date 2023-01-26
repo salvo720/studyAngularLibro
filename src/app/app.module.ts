@@ -36,6 +36,7 @@ import { InfoComponent } from './component/info/info.component';
 import { ObservableTipiDifferentiComponent } from './component/observable-tipi-differenti/observable-tipi-differenti.component';
 import { ObservableMulticastComponent } from './component/observable/observable-multicast/observable-multicast.component';
 import { ObservableUnicastComponent } from './component/observable/observable-unicast/observable-unicast.component';
+import { DashComponent } from './component/dash/dash.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { ObservableUnicastComponent } from './component/observable/observable-un
     ObservableTipiDifferentiComponent,
     ObservableMulticastComponent,
     ObservableUnicastComponent,
+    DashComponent,
   ],
   imports: [
     BrowserModule,

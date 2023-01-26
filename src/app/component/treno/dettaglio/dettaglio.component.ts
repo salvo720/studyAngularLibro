@@ -1,10 +1,11 @@
 import { CMessaggio } from './../../../model/class/messaggio/cmessaggio';
 import { ChatService } from './../../../service/chat/chat.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError , map , tap } from 'rxjs';
 import { IMetro } from 'src/app/model/interfaces/metro/imetro';
 import { TreniService } from 'src/app/service/treni/treni.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-dettaglio',
@@ -18,11 +19,18 @@ export class DettaglioComponent implements OnInit {
   errorMsg;
   listaChat: CMessaggio[];
   chatMsg: CMessaggio;
+
+  filtraChat : FormGroup
   constructor(
     private route: ActivatedRoute,
     private treniService: TreniService,
-    private chatService: ChatService
-  ) {}
+    private chatService: ChatService,
+    private fb:FormBuilder
+  ) {
+    this.filtraChat = this.fb.group({
+      stringaCercata : ['', [Validators.required ,Validators.minLength(3)]],
+    });
+  }
 
   ngOnInit(): void {
     this.idtreno = this.route.snapshot.paramMap.get('id')!;
@@ -75,12 +83,20 @@ export class DettaglioComponent implements OnInit {
     this.sendMsgObservable(this.chatMsg);
   }
 
-// 2) Attendo che lìapi risponda con con oggetto messaggio
+// 2) Attendo che l'api risponda con con oggetto messaggio
   sendMsgObservable(msg : CMessaggio){
     this.chatService.sendChatMsgObservable(msg).subscribe(
       // la riga successiva e per aggiornare il contenitore dei dati senza agiornare la pagina
         risposta => this.listaChat.push(risposta[0]),
         error => this.errorMsg = error
     );
+  }
+  filtraChatOnSubmit(){
+    return this.chatService.getListaChatObservable(this.idtreno).pipe(
+      tap(dati => console.log(this.filtraChat.get('stringaCercata'))),
+      map((dati => this.listaChat = dati.filter(this.filtraChat.get('stringaCercata')))),
+      error => this.errorMsg = error
+    );
+
   }
 }
