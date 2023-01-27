@@ -13,12 +13,12 @@ export class ChatService {
 
   constructor(private http: HttpClient) {}
 
-  getListaChatObservable(idt: string) {
+  getListaChatObservable(idt: string , search : string = '') : Observable<CMessaggio[]>{
     return this.http
       .get<CMessaggio[]>(this.apiGetUrlChat + '?idt=' + idt)
       .pipe(
         map(
-          (risposta: CMessaggio[]) => risposta['data'],
+          (risposta: CMessaggio[]) => risposta['data'].filter(function (el){ return el.testo.includes(search)}),
           catchError(this.handleErrorObs)
         )
       );

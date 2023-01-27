@@ -1,11 +1,26 @@
 import { CMessaggio } from './../../../model/class/messaggio/cmessaggio';
 import { ChatService } from './../../../service/chat/chat.service';
-import { Observable, catchError , map , tap } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  map,
+  tap,
+  switchMap,
+  of,
+  Subscription,
+  debounceTime,
+  retry,
+} from 'rxjs';
 import { IMetro } from 'src/app/model/interfaces/metro/imetro';
 import { TreniService } from 'src/app/service/treni/treni.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-dettaglio',
@@ -20,15 +35,15 @@ export class DettaglioComponent implements OnInit {
   listaChat: CMessaggio[];
   chatMsg: CMessaggio;
 
-  filtraChat : FormGroup
+  filtraChat: FormGroup;
   constructor(
     private route: ActivatedRoute,
     private treniService: TreniService,
     private chatService: ChatService,
-    private fb:FormBuilder
+    private fb: FormBuilder
   ) {
     this.filtraChat = this.fb.group({
-      stringaCercata : ['', [Validators.required ,Validators.minLength(3)]],
+      stringaCercata: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -48,19 +63,20 @@ export class DettaglioComponent implements OnInit {
     // sara sempre valorizzato non null
 
     this.getListaChatObservable(this.idtreno);
+    this.filtraChatOnSubmit();
   }
 
-  getDettaglioMetroObservable(idt: string) {
-    this.treniService.getDettaglioMetroObservable(idt).subscribe(
+  getDettaglioMetroObservable(idt: string): Subscription {
+    return this.treniService.getDettaglioMetroObservable(idt).subscribe(
       (risp) => (this.treno = risp[0]),
       (error) => (this.errorMsg = error)
     );
   }
 
-  getListaChatObservable(idt: string) {
+  getListaChatObservable(idt: string): Subscription {
     return this.chatService.getListaChatObservable(idt).subscribe(
-      (risp) => (this.listaChat = risp),
-      (error) => (this.errorMsg = error)
+      (risp: CMessaggio[]) => (this.listaChat = risp),
+      (error: any) => (this.errorMsg = error)
     );
   }
 
@@ -69,7 +85,7 @@ export class DettaglioComponent implements OnInit {
   }
 
   // 1) costruisco l'oggeto messaggio con i dati noti
-  invioMsg(testoMsg: string) {
+  invioMsg(testoMsg: string): void {
     // utente di test generico impostao a 99 , e idm impostato a 0
     this.chatMsg = {
       id: 0,
@@ -83,20 +99,34 @@ export class DettaglioComponent implements OnInit {
     this.sendMsgObservable(this.chatMsg);
   }
 
-// 2) Attendo che l'api risponda con con oggetto messaggio
-  sendMsgObservable(msg : CMessaggio){
-    this.chatService.sendChatMsgObservable(msg).subscribe(
+  // 2) Attendo che l'api risponda con con oggetto messaggio
+  sendMsgObservable(msg: CMessaggio): Subscription {
+    return this.chatService.sendChatMsgObservable(msg).subscribe(
       // la riga successiva e per aggiornare il contenitore dei dati senza agiornare la pagina
-        risposta => this.listaChat.push(risposta[0]),
-        error => this.errorMsg = error
+      (risposta) => this.listaChat.push(risposta[0]),
+      (error) => (this.errorMsg = error)
     );
   }
-  filtraChatOnSubmit(){
-    return this.chatService.getListaChatObservable(this.idtreno).pipe(
-      tap(dati => console.log(this.filtraChat.get('stringaCercata'))),
-      map((dati => this.listaChat = dati.filter(this.filtraChat.get('stringaCercata')))),
-      error => this.errorMsg = error
-    );
+  filtraChatOnSubmit() {
+    return this.stringaCercata.valueChanges.pipe(
+        // retry serve per gestire gli errori , e ripete la richiesta per il numero di volte indicato
+        // nel caso di un errore il subscribe originale viene perso ma con retry viene effettuato nuovamente il subscribe
+        // se dopo le due richieste di retry + quella base , quindi per un totale di 3 , ad esempio la connessione non e tornata
+        // si passa alla visualizzazione dell'errore della funzione subscribe
+        retry(2),
+        debounceTime(300), //elimina le richieste emesse prima di un certo tempo minimo , in questo caso 0,3 sec riducendo le richieste inviate
+        switchMap((str: string) =>
+          this.chatService.getListaChatObservable(this.idtreno, str)
+        )
+      ).subscribe(
+        (risp: any) => (this.listaChat = risp),
+        (error: any) => alert('Qualcosa e andato storto ' + error)
+      );
+  }
 
+  // getter del form
+
+  get stringaCercata(): FormControl {
+    return this.filtraChat.get('stringaCercata') as FormControl;
   }
 }

@@ -1,27 +1,22 @@
-<div *ngIf="treno"  class="dettaglioTreno">
+<div *ngIf="treno" class="dettaglioTreno">
   <h1> Dettaglio treno </h1>
   <p> Treno Linea : {{ treno.linea }}</p>
   <p> ID : {{ treno.id }}</p>
 </div>
 
 <div class="dettagliOTreno">
-  <form class="input-group" [formGroup]="filtraChat" (ngSubmit)="filtraChatOnSubmit()">
-      <div class="form-outline">
-        <input type="search" formControlName="stringaCercata" id="idStringaCercata" class="form-control" placeholder="Filtra i messaggi" />
-        <label class="form-label" for="form1">Cerca Messaggi</label>
-      </div>
-      <button type="submit" class="btn btn-primary">
-        <i class="fas fa-search">Cerca</i>
-      </button>
+  <form class="input-group" [formGroup]="filtraChat" >
+    <div class="form-outline">
+      <input type="search" formControlName="stringaCercata" id="idStringaCercata" class="form-control" placeholder="Filtra i messaggi" />
+      <label class="form-label" for="idStringaCercata">Cerca Messaggi</label>
+    </div>
   </form>
+
+  <!-- <p> valori inseriti nel form {{ filtraChat.value | json }} </p> -->
+
   <h2> Lista chat : </h2>
   <app-chat *ngFor="let chat of listaChat" [msgIn]="chat"></app-chat>
 </div>
 <!-- i due pezzi vengono esegiti uno dopo l'altro , andando a azzerrare msg , dopo aver inviato i dati  -->
 <input type="text" #msg required>
 <button (click)="invioMsg(msg.value);msg.value=''"> Invia </button>
-
-
-
-<p> valori inseriti nel form {{ filtraChat.value | json }} </p>
-
