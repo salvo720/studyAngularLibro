@@ -37,25 +37,27 @@ app.Run();
 
 
 
-// connectiond db
+// connectiond db nativa
+/*
 string server = "localhost";
 string database = "dbAngularLibro";
 string username = "salvo";
 string password = "";
 string connstring = "SERVER="+server+ ";" + "DATABASE=" + database + ";" + "UID=" + username + ";" + "PASSWORD=" + password + ";" ;
-//MySqlConnection conn = new MySqlConnection(connstring);
-//conn.Open();
-//string query = "select * from treno ";
-//MySqlCommand cmd = new MySqlCommand(query, conn);
-//MySqlDataReader reader = cmd.ExecuteReader();
-//while (reader.Read())
-//{
-//  Console.WriteLine("reader : " + reader);
-//  Console.WriteLine(reader["linea"]);
-//  Console.WriteLine(reader["direzione"]);
-//  Console.WriteLine(reader["numChatting"]);
-//  Console.WriteLine(reader["tempo"]);
-//  Console.WriteLine(reader["stazione"]);
-//  Console.WriteLine(reader["carrozza"]);
-//}
+MySqlConnection conn = new MySqlConnection(connstring);
+conn.Open();
+string query = "select * from treno ";
+MySqlCommand cmd = new MySqlCommand(query, conn);
+MySqlDataReader reader = cmd.ExecuteReader();
+while (reader.Read())
+{
+  Console.WriteLine("reader : " + reader);
+  Console.WriteLine(reader["linea"]);
+  Console.WriteLine(reader["direzione"]);
+  Console.WriteLine(reader["numChatting"]);
+  Console.WriteLine(reader["tempo"]);
+  Console.WriteLine(reader["stazione"]);
+  Console.WriteLine(reader["carrozza"]);
+}
+*/
 

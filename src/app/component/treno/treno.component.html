@@ -5,7 +5,10 @@
 <h1> MetroChat  </h1>
 
 
-<div class="listaTreni">
+<h1 [@titoloIn]="statoTitolo"> Treni in arrivo </h1>
+
+
+<div [@listaTreniIn]="statoListaTreni" class="listaTreni">
   <ul>
     <li>
       <app-metro *ngFor="let metro of listaMetro"

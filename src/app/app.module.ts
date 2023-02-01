@@ -38,6 +38,8 @@ import { ObservableMulticastComponent } from './component/observable/observable-
 import { ObservableUnicastComponent } from './component/observable/observable-unicast/observable-unicast.component';
 import { DashComponent } from './component/dash/dash.component';
 
+// animazioni
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,6 +73,7 @@ import { DashComponent } from './component/dash/dash.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
