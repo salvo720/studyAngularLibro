@@ -77,7 +77,7 @@ export class ChatService {
   getListaChatPreferiti(): Observable<CMessaggio[]> {
     return this.http.get<CMessaggio>(this.apiGetUrlChat).pipe(
       map((risposta: any) => {
-        return risposta['data'].filter((el) => {
+        return risposta['data'].filter(function(el) {
           return el.stato == 1;
         });
       }),
