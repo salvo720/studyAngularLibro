@@ -1,4 +1,6 @@
 <!-- componente lista treni  -->
 <h1> MetroChat </h1>
 
-<p>preferiti works!</p>
+<h2> Lista dei preferiti dalle chat </h2>
+
+<app-chat *ngFor="let chat of listaChatPreferiti" [msgIn]="chat"></app-chat>

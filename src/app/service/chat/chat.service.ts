@@ -13,15 +13,19 @@ export class ChatService {
 
   constructor(private http: HttpClient) {}
 
-  getListaChatObservable(idt: string , search : string = '') : Observable<CMessaggio[]>{
-    return this.http
-      .get<CMessaggio[]>(this.apiGetUrlChat + '?idt=' + idt)
-      .pipe(
-        map(
-          (risposta: CMessaggio[]) => risposta['data'].filter(function (el){ return el.testo.includes(search)}),
-          catchError(this.handleErrorObs)
-        )
-      );
+  getListaChatObservable(
+    idt: string,
+    search: string = ''
+  ): Observable<CMessaggio[]> {
+    return this.http.get<CMessaggio[]>(this.apiGetUrlChat + '?idt=' + idt).pipe(
+      map(
+        (risposta: CMessaggio[]) =>
+          risposta['data'].filter(function (el) {
+            return el.testo.includes(search);
+          }),
+        catchError(this.handleErrorObs)
+      )
+    );
   }
 
   sendChatMsgObservable(obj: CMessaggio): Observable<CMessaggio> {
@@ -40,25 +44,44 @@ export class ChatService {
       );
   }
 
-  DeleteListaChatObservable(idChat:number){
-    return this.http.delete<CMessaggio>(this.apiPreferitiUrlChat + idChat).pipe(
-      map(
-        (risposta:any) => console.log(risposta) ,
-        catchError(this.handleErrorObs)
-      )
-    );
+  DeleteListaChatObservable(idChat: number) {
+    return this.http
+      .delete<CMessaggio>(this.apiPreferitiUrlChat + idChat)
+      .pipe(
+        map(
+          (risposta: any) => console.log(risposta),
+          catchError(this.handleErrorObs)
+        )
+      );
   }
 
-  setChatPreferiti(updateStato:CMessaggio) {
-      // aggiungendo
-      let responseHeader :object = { observe: 'response' }
-     return this.http.put<Number>(this.apiPreferitiUrlChat + updateStato.id , updateStato , responseHeader).pipe(
-      map( (risposta:any ) => risposta.status) ,
-      catchError(this.handleErrorObs)
+  setChatPreferiti(updateStato: CMessaggio) {
+    // aggiungendo responseHeader possiamo andare a prendere lo status della risposta
+    let responseHeader: object = { observe: 'response' };
+    return this.http
+      .put<Number>(
+        this.apiPreferitiUrlChat + updateStato.id,
+        updateStato,
+        responseHeader
+      )
+      .pipe(
+        map((risposta: any) => risposta.status),
+        catchError(this.handleErrorObs)
       );
   }
 
   private handleErrorObs(error: any) {
     return throwError(error.message || error);
+  }
+
+  getListaChatPreferiti(): Observable<CMessaggio[]> {
+    return this.http.get<CMessaggio>(this.apiGetUrlChat).pipe(
+      map((risposta: any) => {
+        return risposta['data'].filter((el) => {
+          return el.stato == 1;
+        });
+      }),
+      catchError(this.handleErrorObs)
+    );
   }
 }
