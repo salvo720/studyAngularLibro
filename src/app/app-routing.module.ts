@@ -15,8 +15,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { DettaglioComponent } from './component/treno/dettaglio/dettaglio.component';
 
 const routes: Routes = [
-  { path: 'TreniInArrivo', component: TrenoComponent },
-  { path: 'TreniInArrivo/Dettaglio', component: ChatTrenoComponent , children : [
+  { path: 'TreniInArrivo', component: TrenoComponent , data: {statoAnim : 'start'} },
+  { path: 'TreniInArrivo/Dettaglio', component: ChatTrenoComponent , data: {statoAnim : 'dettaglio' , menuBack:'ON'}, children : [
     {path: '', redirectTo: 'Errore' , pathMatch:'full'},
     {path: 'Gialla', component: TrenoGialloComponent  },
     {path: 'Rossa', component: TrenoRossoComponent  },

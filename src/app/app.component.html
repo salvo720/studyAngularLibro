@@ -1,2 +1,8 @@
-<!-- componente per il routing  -->
-<router-outlet></router-outlet>
+
+<!-- menu -->
+<app-navbar [menuBack]="getMenuBack(out)"></app-navbar>
+
+<main [@cambioPagina]="getStatoAnimazione(out)">
+  <!-- componente per il routing  -->
+  <router-outlet #out="outlet"></router-outlet>
+</main>
