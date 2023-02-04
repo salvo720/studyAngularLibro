@@ -1,5 +1,5 @@
 export interface IUtente {
-  nome:string
+  nome:string | undefined
   email : string
   password : string
 }

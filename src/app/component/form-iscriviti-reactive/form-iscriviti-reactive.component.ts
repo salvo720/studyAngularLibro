@@ -1,6 +1,6 @@
 import { IUtente } from './../../model/interfaces/utente/iutente';
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Form, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 
 @Component({
@@ -12,21 +12,21 @@ export class FormIscrivitiReactiveComponent implements OnInit {
   formIscrizione: FormGroup;
   nomeObs: string;
   utente: IUtente;
-  provincie:any
-  sesso:any
+  provincie: any
+  sesso: any
   constructor(private formInstance: FormBuilder) {
     // inizializzatore form equivale a tante righe di nomecampo = new FormControl('')
     this.formIscrizione = this.formInstance.group({
       // senza validazione
       // Nome:'Davide',
       // se li mettiamo come array sara attiva la validazione del campo con le regole scelte
-      nome: ['Davide', [ Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      email: ['' , [ Validators.required, Validators.email, Validators.minLength(3), Validators.maxLength(255)]],
-      password: [ '' , [ Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
-      provincia : [ '' ,   Validators.required  ],
-      catA : [ false ,   Validators.requiredTrue  ],
-      catB : [ false ,   Validators.requiredTrue  ],
-      genere : [ '' ,   Validators.required  ],
+      nome: ['Davide', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      email: ['', [Validators.required, Validators.email, Validators.minLength(3), Validators.maxLength(255)]],
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+      provincia: ['', Validators.required],
+      catA: [false, Validators.requiredTrue],
+      catB: [false, Validators.requiredTrue],
+      genere: ['', Validators.required],
     });
 
     this.provincie = [
@@ -53,8 +53,8 @@ export class FormIscrivitiReactiveComponent implements OnInit {
   }
 
   // getter nome
-  get nome() {
-    return this.formIscrizione.get('nome')!;
+  get nome(): FormControl {
+    return this.formIscrizione.get('nome') as FormControl;
   }
   get email() {
     return this.formIscrizione.get('email')!;
@@ -108,12 +108,12 @@ export class FormIscrivitiReactiveComponent implements OnInit {
 
     //metodo 3 aggiorno parzialmente i campi del form
     this.formIscrizione.patchValue({
-      nome : 'Luca',
-      email : 'lucarossi@miaemail.com',
-      provincia : 'BO',
-      catA : true ,
-      catB : false ,
-      genere : 'M',
+      nome: 'Luca',
+      email: 'lucarossi@miaemail.com',
+      provincia: 'BO',
+      catA: true,
+      catB: false,
+      genere: 'M',
     });
   }
 }

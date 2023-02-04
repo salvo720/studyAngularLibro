@@ -12,14 +12,14 @@ import { IAmico } from 'src/app/model/interfaces/amico/iamico';
 export class InfoComponent implements OnInit, OnDestroy {
   amiciSub: Subscription;
   idu: string
-  citta:string
+  citta: string
   errorMsg: string
   listaAmici: Observable<any>
   constructor(
     private infuUserService: InfoUserService,
     private Route: ActivatedRoute,
   ) {
-    this.citta='Milano';
+    this.citta = 'Milano';
   }
 
   ngOnInit(): void {
@@ -29,11 +29,11 @@ export class InfoComponent implements OnInit, OnDestroy {
     //   (error) => (this.errorMsg = error),
     //   () => console.log('Fine')
     // );
-    this.listaAmici = this.infuUserService.getInfoUser(this.idu,this.citta)
+    this.listaAmici = this.infuUserService.getInfoUser(this.idu, this.citta)
   }
 
   refresh(): void {
-    setTimeout( ()=> { window.location.reload()},0.5000)
+    setTimeout(() => { window.location.reload() }, 0.5000)
   }
   ngOnDestroy(): void {
     // this.amiciSub.destroy();  // non worka non viene trovata

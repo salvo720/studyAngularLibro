@@ -1,3 +1,15 @@
 <!-- componente lista treni  -->
-<h1> MetroChat </h1>
-<p>login works!</p>
+<h1> MetroChat Login  </h1>
+
+<form [formGroup]="formLogin" (ngSubmit)="InvioFormLogin()">
+  <div class="mb-3">
+    <label for="idEmail" class="form-label">Email address</label>
+    <input type="email" class="form-control" id="idEmail" aria-describedby="emailHelp" formControlName="Email">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  <div class="mb-3">
+    <label for="idPassword" class="form-label">Password</label>
+    <input type="password" class="form-control" id="idPassword" formControlName="Password">
+  </div>
+  <button type="submit" [disabled]="!formLogin.valid" class="btn btn-primary">Submit</button>
+</form>

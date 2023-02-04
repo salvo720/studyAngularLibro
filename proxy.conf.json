@@ -3,5 +3,10 @@
     "target": "https://localhost:7092/",
     "secure": false,
     "changeOrigin": true
+  },
+  "/login/login/*": {
+    "target": "https://localhost:7092/",
+    "secure": false,
+    "changeOrigin": true
   }
 }
