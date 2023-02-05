@@ -45,19 +45,24 @@ namespace backEndCsharp.Controllers
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> login(Utente utente)
+
+    public async Task<List<Utente>> login([FromBody] Utente utente)
     {
-      var userList = await  _context.Utente.ToListAsync();
-      string email = utente.Email;
-      string password = utente.Email;
 
-      Console.WriteLine("email " + email);
-      Console.WriteLine("password " + password);
+      var userList = await  _context.Utente.Where(user => user.Email == utente.Email && user.Password == utente.Password ).ToListAsync();
+      foreach (var item in userList)
+      {
+        Console.WriteLine("item:" + item);
+      }
 
+      if (userList.Count <= 1) {
+        NotFound();
+      }
+      //Utente userlog = userList[0];
 
+      return userList;
 
-      return View();
-
+      //return View();
 
     }
 

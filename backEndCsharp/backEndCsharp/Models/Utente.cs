@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace backEndCsharp.Models;
 
@@ -19,11 +20,13 @@ public partial class Utente
   public string AmicoId { get; set; } = null!;
 
   public string Citta { get; set; } = null!;
+  public string Password { get; set; } = null!;
+
   //attributo non mappato nel db  
   [NotMapped]
   public List<Utente>? Amici { get; set; } = null;
 
-  public Utente( Utente utente, List<Utente> amici)
+  public Utente(Utente utente, List<Utente> amici)
   {
     this.Id = utente.Id;
     this.Nome = utente.Nome;
@@ -33,25 +36,24 @@ public partial class Utente
     this.AmicoId = utente.AmicoId;
     this.Citta = utente.Citta;
     this.Amici = amici;
+    this.Password = utente.Password;
   }
-  protected Utente()
+
+  public Utente()
   {
+  }
+
+  [JsonConstructor]
+  public Utente(string email , string password )
+  {
+    //attributi necessari not null 
+    this.Citta = this.AmicoId = this.Ip = this.Cognome = this.Nome = "";
+    this.Amici = null;
+
+    Email = email;
+    Password = password;
   }
 }
 
 // //classe non mappata nel db  
 //[NotMapped]
-//public partial class UtentePower : Utente
-//{
-//  public string cia { get; set; } = null!;
-//  public List<Utente> Amici { get; set; } = null!;
-
-//  public UtentePower(Utente utente, List<Utente> amici) : base()
-//  {
-//    this.Amici = amici;
-//    this.cia = "asd";
-//  }
-//  protected UtentePower()
-//  {
-//  }
-//}

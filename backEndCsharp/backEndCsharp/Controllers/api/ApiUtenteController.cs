@@ -9,6 +9,7 @@ using backEndCsharp.DbContex;
 using backEndCsharp.Models;
 using DocumentFormat.OpenXml.Office2010.Excel;
 using System.Collections;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 
 namespace backEndCsharp.Controllers.api
@@ -28,7 +29,17 @@ namespace backEndCsharp.Controllers.api
     [HttpGet]
     public async Task<ActionResult<Dictionary<string, List<Utente>>>> GetUtente()
     {
-      var utenti = await _context.Utente.ToListAsync();
+      var utenti = await _context.Utente.Select(u => new Utente
+      {
+        Id = u.Id,
+        Nome = u.Nome,
+        Cognome = u.Cognome,
+        Email = u.Email,
+        Ip = u.Ip,
+        AmicoId = u.AmicoId,
+      }).ToListAsync();
+
+
       Dictionary<string, List<Utente>> DictionaryUtente = new Dictionary<string, List<Utente>>(){
             { "data" , utenti  }
           };
@@ -42,14 +53,24 @@ namespace backEndCsharp.Controllers.api
     {
       List<Utente> ListAmico = new List<Utente>();
 
-      var utente = await _context.Utente.FindAsync(id);
-     
+      var utente = await _context.Utente.Where(u => u.Id == id)
+      .Select(u => new Utente
+      {
+        Id = u.Id,
+        Nome = u.Nome,
+        Cognome = u.Cognome,
+        Email = u.Email,
+        Ip = u.Ip,
+        AmicoId = u.AmicoId,
+      })
+      .FirstOrDefaultAsync();
+
 
       if (utente == null)
       {
         //old code
         //return NotFound();
-        return new Utente(null ,null );
+        return new Utente();
       }
 
       string AmicoId = utente.AmicoId;
@@ -58,7 +79,17 @@ namespace backEndCsharp.Controllers.api
       foreach (var idAmico in splitAmicoId)
       {
         int idAmicoInt = Int32.Parse(idAmico);
-        var Amico = await _context.Utente.FindAsync(idAmicoInt)!;
+        var Amico = await _context.Utente.Where(u => u.Id == idAmicoInt)
+      .Select(u => new Utente
+      {
+        Id = u.Id,
+        Nome = u.Nome,
+        Cognome = u.Cognome,
+        Email = u.Email,
+        Ip = u.Ip,
+        AmicoId = u.AmicoId,
+      })
+      .FirstOrDefaultAsync(); ;
         ListAmico.Add(Amico);
       }
       Utente utentePower = new Utente(utente, ListAmico);
